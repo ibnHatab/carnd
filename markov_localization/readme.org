@@ -44,6 +44,7 @@
        - if the distance is positive (landmark is forward of the
          pseudo position) push the distance to the pseudo range vector
 	 - sort the pseudo range vector in ascending order
+
    - return the pseudo range vector
 
 ** Observation model

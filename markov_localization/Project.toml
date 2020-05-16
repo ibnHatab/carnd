@@ -2,3 +2,6 @@ name = "markov_localization"
 uuid = "29f3868a-53a6-4322-b51f-642dd4d0998c"
 authors = ["me"]
 version = "0.1.0"
+
+[deps]
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
