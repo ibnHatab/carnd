@@ -1,0 +1,62 @@
+
+* Markov Assumption
+
+  - A Markov process is one in which the conditional probability
+    distribution of future states (ie the next state) is dependent
+    only upon the current state and not on other preceding states.
+  - It is important to note that the current state may contain all
+    information from preceding states
+
+* Bayes' Filter for Localization
+
+  Implement the Bayes' localization filter by first initializing
+  priors, then doing the following within each time step:
+
+  - extract sensor observations
+	- for each pseudo-position:
+	  - get the motion model probability
+	  - determine pseudo ranges
+	  - get the observation model probability
+	  - use the motion and observation model probabilities to calculate the posterior probability
+	- normalize posteriors (see helpers.h for a normalization function)
+	- update priors (priors --> posteriors)
+
+** Motion model probability
+   We will implement these steps in a function. The starter code below
+   steps through each position x, calls the motion_model function and
+   prints the results to stdout. To complete this exercise fill in the
+   motion_model function which will involve:
+
+   - For each x\_t:
+        - Calculate the transition probability for each potential value x\_t−1
+        - Calculate the discrete motion model probability by
+          multiplying the transition model probability by the belief
+          state (prior) for x\_t−1
+   - Return total probability (sum) of each discrete probability
+
+** Pseudo ranges
+
+   To implement the pseudo_range_estimator function we must do the
+   following for each pseudo position x:
+
+   - For each landmark position:
+     - determine the distance between each pseudo position x and each landmark position
+       - if the distance is positive (landmark is forward of the
+         pseudo position) push the distance to the pseudo range vector
+	 - sort the pseudo range vector in ascending order
+   - return the pseudo range vector
+
+** Observation model
+   The observation model will be implemented by performing the
+   following at each time step:
+
+   - Measure the range to landmarks up to 100m from the vehicle, in
+     the driving direction (forward)
+   - Estimate a pseudo range from each landmark by subtracting pseudo
+     position from the landmark position
+   - Match each pseudo range estimate to its closest observation
+     measurement
+   - For each pseudo range and observation measurement pair, calculate
+     a probability by passing relevant values to norm_pdf:
+     norm_pdf(observation_measurement, pseudo_range_estimate,observation_stdev)
+   - Return the product of all probabilities
