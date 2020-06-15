@@ -1,0 +1,4 @@
+name = "ekf"
+uuid = "8fc8bafd-2687-42e6-8c21-299a8c5d3a9c"
+authors = ["Vladyslav Kinzerskiy <vladyslav.kinzerskiy@porsche-engineering.ro>"]
+version = "0.1.0"

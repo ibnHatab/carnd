@@ -1,0 +1,8 @@
+name = "ukf"
+uuid = "8c109b7d-1826-48bc-8500-348447e7ae5e"
+authors = ["Vladyslav Kinzerskiy <vladyslav.kinzerskiy@porsche-engineering.ro>"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
